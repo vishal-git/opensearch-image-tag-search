@@ -7,7 +7,7 @@ services:
       node.name: opensearch
       plugins.security.disabled: "true"
       logger.level: info
-      OPENSEARCH_INITIAL_ADMIN_PASSWORD: Eval$_pa$$word_test0
+      OPENSEARCH_INITIAL_ADMIN_PASSWORD: Evals_pa$$word_test0
     volumes:
       - /home/vishal/code/opensearch_eval/models:/models
     ulimits:
@@ -20,19 +20,6 @@ services:
     ports:
       - "9200:9200"
       - "9600:9600"
-    networks:
-      - opensearch-net
-
-  opensearch_dashboards:
-    image: opensearchproject/opensearch-dashboards:2.16.0
-    container_name: opensearch_evals_dashboard
-    ports:
-      - "5601:5601"
-    environment:
-      OPENSEARCH_HOSTS: '["http://opensearch:9200"]'
-      DISABLE_SECURITY_DASHBOARDS_PLUGIN: "true"
-    depends_on:
-      - opensearch
     networks:
       - opensearch-net
 
